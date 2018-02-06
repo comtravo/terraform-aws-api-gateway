@@ -15,7 +15,7 @@ data "template_file" "googlemaps-definition" {
 }
 
 module "googlemaps" {
-  source = "../terraform_modules/ct-apig/"
+  source = "github.com/comtravo/terraform-aws-api-gateway"
 
   name        = "googlemaps"
   stage       = "foo"
