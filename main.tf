@@ -15,6 +15,9 @@ resource "aws_api_gateway_deployment" "api-deployment" {
   variables = {
     "version" = "${md5(var.definition)}"
   }
+  lifecycle {
+    create_before_destroy = true
+  }
   depends_on = ["aws_api_gateway_rest_api.api"]
 }
 
