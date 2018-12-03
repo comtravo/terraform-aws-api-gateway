@@ -36,3 +36,7 @@ resource "aws_api_gateway_base_path_mapping" "custom-domain" {
 
   depends_on = ["aws_api_gateway_stage.stage"]
 }
+
+locals {
+  endpoint = "${var.domain_name ? "${var.domain_name}/${aws_api_gateway_rest_api.api.name}" : "${aws_api_gateway_deployment.api-deployment.invoke_url}"}"
+}

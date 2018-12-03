@@ -17,7 +17,8 @@ output "deployment_execution_arn" {
   description = "Deployment execution ARN"
   value       = "${aws_api_gateway_deployment.api-deployment.execution_arn}"
 }
+
 output "endpoint" {
   description = "Serverless custom endpoint"
-  value       = "${var.domain_name}/${aws_api_gateway_rest_api.api.name}"
+  value       = "${local.endpoint}"
 }
