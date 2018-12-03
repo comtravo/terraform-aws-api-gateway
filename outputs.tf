@@ -17,3 +17,8 @@ output "deployment_execution_arn" {
   description = "Deployment execution ARN"
   value       = "${aws_api_gateway_deployment.api-deployment.execution_arn}"
 }
+
+output "url" {
+  description = "Serverless invoke url"
+  value       = "${local.url}"
+}

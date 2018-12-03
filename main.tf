@@ -28,11 +28,15 @@ resource "aws_api_gateway_stage" "stage" {
 }
 
 resource "aws_api_gateway_base_path_mapping" "custom-domain" {
-  count       = "${length(var.domain_name) > 0 ? 1 : 0}"
+  count       = "${var.domain_name != "" ? 1 : 0}"
   api_id      = "${aws_api_gateway_rest_api.api.id}"
   stage_name  = "${var.stage}"
   domain_name = "${var.domain_name}"
   base_path   = "${aws_api_gateway_rest_api.api.name}"
 
   depends_on = ["aws_api_gateway_stage.stage"]
+}
+
+locals {
+  url = "${var.domain_name != "" ? "https://${var.domain_name}/${aws_api_gateway_rest_api.api.name}" : "${aws_api_gateway_deployment.api-deployment.invoke_url}"}"
 }
