@@ -18,7 +18,7 @@ output "deployment_execution_arn" {
   value       = "${aws_api_gateway_deployment.api-deployment.execution_arn}"
 }
 
-output "endpoint" {
-  description = "Serverless custom endpoint"
-  value       = "${local.endpoint}"
+output "url" {
+  description = "Serverless invoke url"
+  value       = "${local.url}"
 }
