@@ -2,6 +2,10 @@ resource "aws_api_gateway_rest_api" "api" {
   name        = "${var.name}"
   description = "${var.name} API Integration"
   body        = "${var.definition}"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # Deploy on change
