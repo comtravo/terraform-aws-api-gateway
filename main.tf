@@ -33,7 +33,7 @@
 * License
 * -------
 *
-* MIT Licensed. See LICENSE for full details.
+* MIT Licensed. See [LICENSE](LICENSE) for full details.
 */
 
 

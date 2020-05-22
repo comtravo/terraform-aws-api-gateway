@@ -31,7 +31,7 @@ Module managed by [Comtravo](https://github.com/comtravo).
 License
 -------
 
-MIT Licensed. See LICENSE for full details.
+MIT Licensed. See [LICENSE](LICENSE) for full details.
 
 ## Requirements
 
