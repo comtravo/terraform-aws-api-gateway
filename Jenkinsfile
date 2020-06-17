@@ -25,7 +25,7 @@ pipeline {
             sh(label: 'Building docker image', script: "make build")
 
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'comtravo-infra-tf-module-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-              sh(label: 'Testing docker image', script: "make test-docker")
+              sh(label: 'Testing docker image', script: "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} make test-docker")
             }
           } finally {
             sh(label: 'Cleanup', script: "make clean-all")

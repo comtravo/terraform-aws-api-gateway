@@ -9,31 +9,5 @@ services:
     environment:
       - AWS_REGION=us-east-1
       - AWS_DEFAULT_REGION=us-east-1
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-foo}
-      - AWS_SECRET_ACCESS_KEY={AWS_SECRET_ACCESS_KEY:-bar}
-      - LOCALSTACK_HOST=localstack
-    depends_on:
-      - localstack
-
-  localstack:
-    image: localstack/localstack
-    environment:
-      - SERVICES=apigateway,events,iam,logs,lambda,sts
-      - AWS_REGION=us-east-1
-      - AWS_DEFAULT_REGION=us-east-1
-      - DEFAULT_REGIONc=us-east-1
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - DATA_DIR=/tmp/localstack/data
-      - DEBUG=1
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "localstack-data:/tmp/localstack"
-
-  start_dependencies:
-    image: puneethn/wait-for-dependencies
-    depends_on:
-      - localstack
-    command: localstack:4567
-
-volumes:
-  localstack-data:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY={AWS_SECRET_ACCESS_KEY}
