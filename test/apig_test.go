@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -20,6 +21,9 @@ func TestAPIG_basic(t *testing.T) {
 	defer terraform.Destroy(t, terraformOptions)
 
 	TerraformApplyAndValidateOutputs(t, terraformOptions)
+
+	fmt.Println(os.Getenv("AWS_ACCESS_KEY_ID"))
+	fmt.Println(os.Getenv("AWS_SECRET_ACCESS_KEY"))
 }
 
 func SetupExample(t *testing.T, apigName string, exampleDir string) *terraform.Options {
