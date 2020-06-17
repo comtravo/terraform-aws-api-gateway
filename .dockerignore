@@ -1,3 +1,18 @@
-.terraform
+docker-compose*
+.gitignore
 .dockerignore
 
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+**/.tfstate
+**/.tfstate.*
+
+# .tfvars files
+**/*.tfvars
+
+Jenkinsfile
+
+examples/**/localstack.tf
+examples/**/foo.zip
