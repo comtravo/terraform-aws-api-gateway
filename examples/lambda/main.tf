@@ -23,7 +23,7 @@ module "apig_lambda" {
 
   source = "github.com/comtravo/terraform-aws-lambda?ref=3.0.0"
 
-  file_name     = "./foo.zip"
+  file_name     = "${path.root}/foo.zip"
   function_name = var.name
   handler       = "index.handler"
   role          = aws_iam_role.lambda.arn
