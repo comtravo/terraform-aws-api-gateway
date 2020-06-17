@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ct-terraform-aws-api-gateway:${GIT_COMMIT:-latest}
+    environment:
+      - AWS_REGION=us-east-1
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
