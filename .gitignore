@@ -27,4 +27,3 @@ override.tf.json
 
 examples/**/localstack.tf
 examples/**/localstack.tf
-examples/**/foo.zip
