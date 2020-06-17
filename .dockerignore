@@ -15,4 +15,3 @@ docker-compose*
 Jenkinsfile
 
 examples/**/localstack.tf
-examples/**/foo.zip
