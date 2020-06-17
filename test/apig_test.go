@@ -2,7 +2,6 @@ package test
 
 import (
 	"fmt"
-	"os"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -20,8 +19,18 @@ func TestAPIG_basic(t *testing.T) {
 	t.Logf("Terraform module inputs: %+v", *terraformOptions)
 	defer terraform.Destroy(t, terraformOptions)
 
-	fmt.Println(os.Getenv("AWS_ACCESS_KEY_ID"))
-	fmt.Println(os.Getenv("AWS_SECRET_ACCESS_KEY"))
+	TerraformApplyAndValidateOutputs(t, terraformOptions)
+}
+
+func TestAPIG_lambda(t *testing.T) {
+	t.Parallel()
+
+	apigName := fmt.Sprintf("apig-%s", random.UniqueId())
+	exampleDir := "../examples/lambda/"
+
+	terraformOptions := SetupExample(t, apigName, exampleDir)
+	t.Logf("Terraform module inputs: %+v", *terraformOptions)
+	defer terraform.Destroy(t, terraformOptions)
 
 	TerraformApplyAndValidateOutputs(t, terraformOptions)
 }
