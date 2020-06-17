@@ -20,10 +20,10 @@ func TestAPIG_basic(t *testing.T) {
 	t.Logf("Terraform module inputs: %+v", *terraformOptions)
 	defer terraform.Destroy(t, terraformOptions)
 
-	TerraformApplyAndValidateOutputs(t, terraformOptions)
-
 	fmt.Println(os.Getenv("AWS_ACCESS_KEY_ID"))
 	fmt.Println(os.Getenv("AWS_SECRET_ACCESS_KEY"))
+
+	TerraformApplyAndValidateOutputs(t, terraformOptions)
 }
 
 func SetupExample(t *testing.T, apigName string, exampleDir string) *terraform.Options {
