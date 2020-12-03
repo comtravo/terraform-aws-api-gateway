@@ -44,6 +44,7 @@ MIT Licensed. See [LICENSE](LICENSE) for full details.
 | deployment_execution_arn | Deployment execution ARN |
 | deployment_id | Deployment id |
 | deployment_invoke_url | Deployment invoke url |
+| name | API Gateway name |
 | rest_api_id | REST API id |
 | url | Serverless invoke url |
 
