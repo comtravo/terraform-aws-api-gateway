@@ -36,11 +36,6 @@ func TestAPIG_lambda(t *testing.T) {
 }
 
 func SetupExample(t *testing.T, apigName string, exampleDir string) *terraform.Options {
-
-	// localstackConfigDestination := path.Join(exampleDir, "localstack.tf")
-	// files.CopyFile("fixtures/localstack.tf", localstackConfigDestination)
-	// t.Logf("Copied localstack file to: %s", localstackConfigDestination)
-
 	terraformOptions := &terraform.Options{
 		TerraformDir: exampleDir,
 		EnvVars: map[string]string{

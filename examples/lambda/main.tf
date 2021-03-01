@@ -21,7 +21,7 @@ resource "aws_iam_role" "lambda" {
 
 module "apig_lambda" {
 
-  source = "github.com/comtravo/terraform-aws-lambda?ref=4.0.0"
+  source = "github.com/comtravo/terraform-aws-lambda?ref=5.0.0"
 
   file_name     = "${path.root}/foo.zip"
   function_name = var.name
