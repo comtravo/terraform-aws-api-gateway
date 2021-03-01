@@ -24,7 +24,7 @@ pipeline {
           try {
             sh(label: 'Building docker image', script: "make build")
 
-            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'comtravo-infra-tf-module-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'automated-infra-testing-account', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
               sh(label: 'Testing docker image', script: "make test-docker")
             }
           } finally {
