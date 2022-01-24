@@ -25,20 +25,16 @@ resource "aws_api_gateway_rest_api" "api" {
 }
 
 # Deploy on change
-# https://github.com/hashicorp/terraform/issues/6613
 resource "aws_api_gateway_deployment" "api-deployment" {
   rest_api_id = aws_api_gateway_rest_api.api.id
-  stage_name  = ""
 
-  # see bug: https://github.com/terraform-providers/terraform-provider-aws/issues/2918
-
-  variables = {
-    "version" = md5(var.definition)
+  triggers = {
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.api.body))
   }
+  
   lifecycle {
     create_before_destroy = true
   }
-  depends_on = [aws_api_gateway_rest_api.api]
 }
 
 resource "aws_api_gateway_stage" "stage" {
